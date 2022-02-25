@@ -10,9 +10,26 @@
   <link rel="shortcut icon" href="https://bcw.blob.core.windows.net/public/img/9977764104160066" type="image/x-icon">
   <link rel="stylesheet" href="assets/style/main.css">
   <title>music-is-fun</title>
+  <style>
+    body.debug .container,
+    body.debug .container-fluid {
+      outline: 2px double blue;
+      outline-offset: -2px;
+    }
+
+    body.debug .row {
+      outline: 2px dashed red;
+      outline-offset: -2px;
+    }
+
+    body.debug [class*="col-"] {
+      outline: 2px dotted forestgreen;
+      outline-offset: -3px;
+    }
+  </style>
 </head>
 
-<body>
+<body class="debug">
   <header>
     <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select align-items-center">
       <a class="navbar-brand ms-3 d-flex align-items-center" href="#">
@@ -25,7 +42,8 @@
   <main class="container-fluid">
     <section class="row my-3">
       <div class="col-lg-6 m-auto">
-        <form onsubmit="app.songsController.search(event)" class="d-flex align-items-center bg-dark elevation-2 rounded p-1 shadow">
+        <form onsubmit="app.songsController.search(event)"
+          class="d-flex align-items-center bg-dark elevation-2 rounded p-1 shadow">
           <input type="text" class="form-control" name="query" placeholder="Search For Music" />
           <button class="btn btn-dark" type="submit">
             Search
@@ -35,16 +53,44 @@
     </section>
 
     <section class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-3">
         <h3 class="text-center">Search Results</h3>
-        <div id="songs" class="col-12 m-0">
+        <div id="songs" class="row d-flex justify-content-center">
           <!-- api songs -->
+          <div class="col-8 bg-light shadow rounded-2 m-2 ">
+            <h2>title</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/en/9/90/Scorpion_by_Drake.jpg" class="img-fluid">
+            <h5>Album</h5>
+            <p>artist</p>
+            <p>$1.00</p>
+          </div>
         </div>
       </div>
+      <!-- template for Now Playing -->
       <div class="col-lg-6">
+        <h3 class="text-center">Now Playing</h3>
+        <div class="row d-flex justify-content-center" id="now-playing">
+          <div class="col-8 bg-light shadow rounded-2  m-2 ">
+            <h2>title</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/en/9/90/Scorpion_by_Drake.jpg" class="img-fluid">
+            <h5>Album</h5>
+            <p>artist</p>
+            <p>$1.00</p>
+          </div>
+        </div>
+      </div>
+      <!-- template for playlist -->
+      <div class="col-lg-3">
         <h3 class="text-center">Playlist</h3>
-        <div class="col-12 m-0" id="playlist">
-          <!-- template for playlist -->
+        <div id="playlist" class="row d-flex justify-content-center">
+          <!-- api playlist -->
+          <div class="col-8 bg-light shadow rounded-2 m-2 ">
+            <h2>title</h2>
+            <img src="https://upload.wikimedia.org/wikipedia/en/9/90/Scorpion_by_Drake.jpg" class="img-fluid">
+            <h5>Album</h5>
+            <p>artist</p>
+            <p>$1.00</p>
+          </div>
         </div>
       </div>
     </section>

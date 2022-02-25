@@ -12,10 +12,30 @@ export default class Song {
 
   get Template() {
     return `
+    <div class="col-8 bg-light shadow rounded-2 m-2" onclick="app.songsController.setNowPlaying('${this.id}')">
+    <h2>${this.title}</h2>
+    <img  class= "img-fluid" src="${this.albumArt}">
+    <h5>${this.album}</h5>
+    <p>${this.artist}</p>
+    <p>$${this.price}</p>
+  </div>
 
         `;
   }
+  get NowPlayingTemplate() {
+    return `
+    <div class="col-8 bg-light shadow rounded-2 m-2">
+    <h2>${this.title}</h2>
+    <img  class= "img-fluid" src="${this.albumArt}">
+    <h5>${this.album}</h5>
+    <p>${this.artist}</p>
+    <p>$${this.price}</p>
+    <audio controls src="${this.preview}"></audio>
+    <button class "btn btn-primary" onclick="app.playlistsController.saveSong()"> Like</button>
+  </div>
 
+        `;
+  }
   get playlistTemplate() {
     return `
 
